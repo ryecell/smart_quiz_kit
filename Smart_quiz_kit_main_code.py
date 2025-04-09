@@ -8,6 +8,8 @@ def create_quiz():
     while items_counter < items_total:
         question = input("Enter question.\nQuestion "f"{items_counter + 1}. ")
         alphabets = [chr(i) for i in range(97, 101)] # -> letters a-b loop
+        
+        #choices loop for a,b,c,d
         choices = {} 
         for letters in alphabets:
             choices[letters] = input(f"Choice {letters}: ")
@@ -16,6 +18,7 @@ def create_quiz():
         
         items_counter += 1
         
+        #dictionary to store values
         question_data = {
             "Question": question,
             "Choices": choices,
