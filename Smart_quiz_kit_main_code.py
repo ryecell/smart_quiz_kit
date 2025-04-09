@@ -1,6 +1,8 @@
 #function that creates quizzes
 def create_quiz():
     subject = input("Enter the subject of your quiz: ")
+    items_counter = 0
+    quiz_data = [] #list to store questions
     
     #function so that the user should input a proper number
     while True:
@@ -12,9 +14,7 @@ def create_quiz():
                 break
         except ValueError:
             print("Invalid input. Please enter a number.")
-        
-        quiz_data = [] #list to store questions
-        
+            
     #question and answer input        
     while items_counter < items_total:
         question = input("Enter question.\nQuestion "f"{items_counter + 1}. ")
@@ -26,9 +26,7 @@ def create_quiz():
             choices[letters] = input(f"Choice {letters}: ")
             
         correct_answer = input("Correct answer(a-d): ")
-        
-        items_counter += 1
-        
+
         #dictionary to store values
         question_data = {
             "Question": question,
@@ -36,4 +34,20 @@ def create_quiz():
             "Correct answer": correct_answer
         }
         
+        quiz_data.append(question_data)
+        items_counter += 1
+        
+    #saving to a txt file
+    filename = f"{subject.lower().replace(' ', '_')}_quiz.txt"
+    
+    with open(filename, "w") as file:
+        file.write(f"Subject: {subject}\n")
+        file.write(f"Total Questions: {items_total}\n------------------------\n")
+        for i, questions in enumerate(quiz_data, start = 1):
+            file.write(f"{i}.{questions['Question']}\n")
+            for key, val in questions["Choices"].items():
+                file.write(f"   {key}.{val}\n")
+            file.write(f"   [Correct answer: {questions["Correct answer"]}]\n\n")
+    print(f"\n✅ Quiz saved successfully to '{filename}'!")
+
 create_quiz()
