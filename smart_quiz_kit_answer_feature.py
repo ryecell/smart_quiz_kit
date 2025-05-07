@@ -1,18 +1,22 @@
+def answer_quiz():
 #enter student info
-student_name = input("Enter your full name (LN, FN MI.): ")
-section = input("Enter your section(ex. BSCPE 1-2): ")
-subject = input("Enter the subject you want to answer: ")
+    student_name = input("Enter your full name (LN, FN MI.): ")
+    section = input("Enter your section(ex. BSCPE 1-2): ")
+    subject = input("Enter the subject you want to answer: ")
 
-file_path = subject +'_quiz.txt' 
-try:
-    file = open(file_path, 'r')
+    file_path = subject +'_quiz.txt' 
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+    except FileNotFoundError:
+        print(f"Error: {subject} does not exist")
+
+    score = 0
+    total_questions = 0
+    question = ''
+    choices = {}
+    correct_answer = ''
+    state = 'reading'
     
-    lines = file.readlines(5)
     for line in lines:
-        print(line.strip())
-        
-except FileNotFoundError:
-    print(f"Error: Subject does not exist")
-    print(file_path)
-
-score = 0
+        line = line.strip()
