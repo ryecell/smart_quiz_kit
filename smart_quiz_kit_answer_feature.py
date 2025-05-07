@@ -5,9 +5,9 @@ subject = input("Enter the subject you want to answer: ")
 
 file_path = subject +'_quiz.txt' 
 try:
-    with file = open(file_path, 'r')
-    print(file)
-    lines = file.readlines()
+    file = open(file_path, 'r')
+    
+    lines = file.readlines(5)
     for line in lines:
         print(line.strip())
         
