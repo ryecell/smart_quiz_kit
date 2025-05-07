@@ -5,7 +5,7 @@ subject = input("Enter the subject you want to answer: ")
 
 file_path = subject +'_quiz.txt' 
 try:
-    file = open(file_path, 'r')
+    with file = open(file_path, 'r')
     print(file)
     lines = file.readlines()
     for line in lines:
@@ -14,4 +14,5 @@ try:
 except FileNotFoundError:
     print(f"Error: Subject does not exist")
     print(file_path)
+
 score = 0
