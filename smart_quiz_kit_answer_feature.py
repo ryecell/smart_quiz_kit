@@ -1,4 +1,5 @@
 def answer_quiz():
+
 #enter student info
     student_name = input("Enter your full name (LN, FN MI.): ")
     section = input("Enter your section(ex. BSCPE 1-2): ")
@@ -20,3 +21,14 @@ def answer_quiz():
     
     for line in lines:
         line = line.strip()
+        #checks if the line is a question or no
+        if line.startswith("Subject") or line.startswith("Total Questions:") or line == '':
+            continue
+        
+        #prints question if the line starts with a number
+        if line[0].isdigit and '.' in line:
+            if question:
+                print(f"\n{question}")
+                for key, val in choices.items():
+                    print(f"    {key}. {val}")
+                    
