@@ -31,4 +31,18 @@ def answer_quiz():
                 print(f"\n{question}")
                 for key, val in choices.items():
                     print(f"    {key}. {val}")
+                    while True:
+                        student_answer =  input("Your answer(a-d): ").lower()
+                        if student_answer in choices:
+                            break
+                        else:
+                            print("Invalid answer. Please choose a, b, c, or d.")
+                    if student_answer == correct_answer:
+                        score += 1
+                    else:
+                        pass
+                    total_questions += 1
+                    question = ""
+                    choices = {}
+                
                     
