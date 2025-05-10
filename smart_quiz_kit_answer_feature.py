@@ -41,6 +41,10 @@ def answer_quiz():
                     choices[key] = val
                 amount += 1
             
-             
+             #printing the questions
+            print(f"\n Question {total_questions}: {question}")
+            for key, val in choices.items():
+                print(f"{key}. {val}")
+            
                 
 answer_quiz()
