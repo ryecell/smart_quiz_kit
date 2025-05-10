@@ -14,15 +14,13 @@ def answer_quiz():
 
     score = 0
     total_questions = 0
-    question = ''
-    choices = {}
-    correct_answer = ''
-    state = 'reading'
-    
-    for line in lines:
-        line = line.strip()
-        #checks if the line is a question or no
-        if line.startswith("Subject") or line.startswith("Total Questions:") or line == '':
+    amount= 0
+    while line < len(lines):
+        line = lines[amount].strip()
+        
+        #function to skip empty lines and non question lines
+        if line.startswith("Subjecet:") or line.startswith("Total Questions:") or line == "":
+            line += 1
             continue
         
         #prints question if the line starts with a number
@@ -45,4 +43,4 @@ def answer_quiz():
                     question = ""
                     choices = {}
                 
-                    
+answer_quiz()
