@@ -9,13 +9,15 @@ class option:
         self.choice = ""
     
     def choices(self):
-        self.choice = int(input())
         while True:
             try:
+                self.choice = int(input())
                 if self.choice == 1:
                     quiz = quizbuilder()
                     quiz.start_quiz_creation()
-            except ValueError or int (not (1 and 2)):
+                else:
+                    print("The options are only 1 or 2")
+            except ValueError:
                 print("Error! Please enter either 1 or 2")
 
 project = option()
