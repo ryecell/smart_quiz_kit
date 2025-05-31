@@ -67,14 +67,5 @@ class quizbuilder:
             
             print("Failed to save",e)
             
-class option:
-    def __init__(self,choice):
-        self.choice = choice
-    
-    def choices(self):
-        try:
-            if self.choice == 1:
-                quizbuilder
-        except ValueError or int (not (1 and 2)):
-            print("Error! Please enter either 1 or 2")
+
             
