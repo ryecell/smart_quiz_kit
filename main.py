@@ -1,0 +1,7 @@
+from utilities.smart_quiz_kit_quiz_creator_in_oop_format import (greeting,option)
+user_name = input("Name: ")
+greet = greeting(user_name)
+greet.hello()
+choice = input()
+project = option(choice)
+project.choices()
