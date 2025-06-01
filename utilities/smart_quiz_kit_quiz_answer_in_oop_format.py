@@ -53,5 +53,13 @@ class quiz_taker:
             
             counter += 1    
         return True
+
+    def take_quiz(self):
+        print("\n Starting Quiz...")
+        for index, ques in enumerate(self.questions, start = 1):
+            print(f"Question {index}: {ques['question']}")
+            for key, val in ques['choices'].items():
+                print(f"    {key}. {val}")
+                
+                
     
-        
