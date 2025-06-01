@@ -61,5 +61,18 @@ class quiz_taker:
             for key, val in ques['choices'].items():
                 print(f"    {key}. {val}")
                 
+            while True:
+                print("Your answer:")
+                answer = input().lower()
+                if answer in ques['choices']:
+                    break
+                print("Options a-d only!")
                 
-    
+            if answer == ques['correct']:
+                print('Correct!')
+                self.score += 1
+            else:
+                print("Incorrect")
+                
+                
+        print(f"Quiz Completed! Your score: {self.score}/{len(self.questions)}\n")
