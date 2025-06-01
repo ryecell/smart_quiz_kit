@@ -4,7 +4,7 @@ class quiz_taker:
         self.questions = []
         self.score = 0
     
-    def answer_quiz(self):
+    def answer_quiz(self,section):
         section = input("Enter your section: ")
         print("Enter the subject of your quiz")
         self.subject = input()
@@ -31,19 +31,27 @@ class quiz_taker:
                 choices = {}
                 counter += 1
                 
-            while counter < len(lines):
-                choice_line = line[counter].strip()
-                
-                if choice_line.startswith("[Correct answer:"):
-                    correct = choice_line.split(":")[1].strip("]")
-                    break
-                
-                elif choice_line[0] in "abcd" and choice_line[1] == ".":
-                    key = choice_line[0]
-                    val = choice_line[3:].strip()
-                    choices[key] = val
+                while counter < len(lines):
+                    choice_line = line[counter].strip()
                     
+                    if choice_line.startswith("[Correct answer:"):
+                        correct = choice_line.split(":")[1].strip("]")
+                        break
+                    
+                    elif choice_line[0] in "abcd" and choice_line[1] == ".":
+                        key = choice_line[0]
+                        val = choice_line[3:].strip()
+                        choices[key] = val
+                
+                counter += 1
+                
+            self.questions.append({
+                "question": question_text,
+                "choices" : choices,
+                "correct" : correct
+            })
             
-        
+            counter += 1    
+        return True
     
         
