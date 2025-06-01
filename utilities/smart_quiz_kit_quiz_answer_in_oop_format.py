@@ -31,6 +31,18 @@ class quiz_taker:
                 choices = {}
                 counter += 1
                 
+            while counter < len(lines):
+                choice_line = line[counter].strip()
+                
+                if choice_line.startswith("[Correct answer:"):
+                    correct = choice_line.split(":")[1].strip("]")
+                    break
+                
+                elif choice_line[0] in "abcd" and choice_line[1] == ".":
+                    key = choice_line[0]
+                    val = choice_line[3:].strip()
+                    choices[key] = val
+                    
             
         
     
