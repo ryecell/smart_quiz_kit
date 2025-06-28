@@ -1,30 +1,36 @@
-from utilities.smart_quiz_kit_quiz_creator_in_oop_format import (greeting,quizbuilder)
-from utilities.smart_quiz_kit_quiz_answer_in_oop_format import(quiz_taker)
+from smart_quiz_kit_answer_feature_with_gui import QuizTaker
+from smart_quiz_kit_create_feature_with_gui import QuizCreator
+import tkinter as tk
+class QuizApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Quiz App")
+        self.root.geometry("500x500")
+        self.main_menu()
 
-user_name = input("Name: ")
-greet = greeting(user_name)
-greet.hello()
+    def main_menu(self):
+        self.clear()
+        tk.Label(self.root, text="📘 Quiz Application", font=("Arial", 18)).pack(pady=30)
+        tk.Button(self.root, text="Create Quiz (Teacher)", width=30, command=self.create_mode).pack(pady=10)
+        tk.Button(self.root, text="Take Quiz (Student)", width=30, command=self.take_mode).pack(pady=10)
+        tk.Button(self.root, text="Exit", width=30, command=self.root.quit).pack(pady=10)
 
+    def create_mode(self):
+        self.clear()
+        creator = QuizCreator(self.root, self.main_menu)
+        creator.run()  # POLYMORPHIC CALL
 
-class option:
-    def __init__(self):
-        self.choice = ""
-    
-    def choices(self):
-        while True:
-            try:
-                self.choice = int(input())
-                if self.choice == 1:
-                    create = quizbuilder()
-                    create.start_quiz_creation()
-                elif self.choice == 2:
-                    answer = quiz_taker()
-                    answer.take_quiz()
-                else:
-                    print("The options are only 1 or 2")
-                    
-            except ValueError:
-                print("Error! Please enter either 1 or 2")
+    def take_mode(self):
+        self.clear()
+        taker = QuizTaker(self.root, self.main_menu)
+        taker.run()  # POLYMORPHIC CALL
 
-project = option()
-project.choices()
+    def clear(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = QuizApp(root)
+    root.mainloop()
+
