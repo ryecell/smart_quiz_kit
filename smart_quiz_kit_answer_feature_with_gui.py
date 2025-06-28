@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
+from base_code import BaseQuiz
 
-class QuizTaker:
+class QuizTaker(BaseQuiz):
     def __init__(self, root, go_home):
         self.root = root
         self.go_home = go_home
@@ -44,6 +45,11 @@ class QuizTaker:
                 i += 1
             return bool(self.questions)
         
+    def load_quiz(self):
+        path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if path and self.parse_file(path):
+            self.show_question()
+
     def show_question(self):
         self.clear()
         if self.index >= len(self.questions):
