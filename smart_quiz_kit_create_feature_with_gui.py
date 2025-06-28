@@ -1,13 +1,16 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
+from base_code import BaseQuiz
 
-class QuizCreator:
+class QuizCreator(BaseQuiz):
     def __init__(self, root, go_home):
-        self.root = root
-        self.go_home = go_home
+        super().__init__(root, go_home)
         self.questions = []
         self.current = 0
+
+    def run(self):
         self.start_screen()
+
 
     def start_screen(self):
         tk.Label(self.root, text="Create Quiz", font=("Arial", 16)).pack(pady=10)
@@ -33,3 +36,4 @@ class QuizCreator:
         self.questions = []
         self.current = 0
         self.next_question()
+
