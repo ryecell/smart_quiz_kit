@@ -37,3 +37,18 @@ class QuizCreator(BaseQuiz):
         self.current = 0
         self.next_question()
 
+    def next_question(self):
+            self.clear()
+            tk.Label(self.root, text=f"Question {self.current + 1}", font=("Arial", 14)).pack(pady=10)
+            self.q_entry = tk.Entry(self.root, width=50)
+            self.q_entry.pack(pady=5)
+            self.choices = {}
+            for key in "abcd":
+                tk.Label(self.root, text=f"Choice {key}:").pack()
+                self.choices[key] = tk.Entry(self.root, width=40)
+                self.choices[key].pack()
+            tk.Label(self.root, text="Correct Answer (a–d):").pack()
+            self.correct = tk.Entry(self.root)
+            self.correct.pack()
+            tk.Button(self.root, text="Next", command=self.save_question).pack(pady=10)
+
